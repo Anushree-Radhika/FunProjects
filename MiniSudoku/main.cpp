@@ -11,58 +11,6 @@ void printboard(){
         cout << "\n";
     }
 }
-
-bool checkrow(){
-    bool flag = true;
-    for(int i = 0;i<4;i++){
-        vector<int>has(5,0);
-        for(int j = 0;j<4;j++){
-            if(board[i][j] != 0){
-                has[board[i][j]]++;
-            }
-        }
-        for(int k = 1;k<5;k++){
-            if(has[k] > 1){
-                return false;
-            }
-            else if(has[k] == 0){
-                flag = false;
-            }
-        }
-    }
-    if(flag){
-        win = true;
-        cout << "Your sudoku is made yay you won\n";
-        return true;
-    }
-    return true;
-}
-
-bool checkcol(){
-    bool flag = true;
-    for(int i = 0;i<4;i++){
-        vector<int>has(5,0);
-        for(int j = 0;j<4;j++){
-            if(board[i][j] != 0){
-                has[board[i][j]]++;
-            }
-        }
-        for(int k = 1;k<5;k++){
-            if(has[k] > 1){
-                return false;
-            }
-            else if(has[k] == 0){
-                flag = false;
-            }
-        }
-    }
-    if(flag){
-        win = true;
-        cout << "Your sudoku is made yay you won\n";
-        return true;
-    }
-    return true;
-}
 bool valcheck(string val){
     int i = val[0] - '0',ii = val[1] - '0',num = val[2] - '0';
     if(i >= 0 && i <= 3 && ii >= 0 && ii <= 3 && num >= 1 && num <= 4){
@@ -77,27 +25,7 @@ bool valcheck(string val){
     }
     return false;
 }
-void minisudoku() {
-    if(!checkrow){
-        cout << "Duplicate values in the row.\nYou loose\n";
-        return;
-    }
-    else{
-        if(win){
-            return;
-        }
-    }
-    if(!checkcol){
-        cout << "Duplicate values in the column.\nYou loose\n";
-        return;
-    }
-    else{
-        if(win){
-            return;
-        }
-    }
-}
-bool didiwin(){
+bool minisudoku(){
     for(int i = 0;i<4;i++){
         vector<int>s(5,0);
         for(int j = 0;j<4;j++){
@@ -154,8 +82,7 @@ int main(){
                 f = false;
             }
         }
-        minisudoku();
-        if(didiwin()){
+        if(minisudoku()){
             win = true;
             f = false;
         }
