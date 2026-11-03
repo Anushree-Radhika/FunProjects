@@ -1,3 +1,5 @@
+// this is radhadasi coding
+
 #include<bits/stdc++.h>
 using namespace std;
 vector<vector<int>>board(4,vector<int>(4,0));
